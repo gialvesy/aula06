@@ -1,0 +1,43 @@
+[
+{
+    "cachorro": {
+        "nome": "Banguela",
+        "idade": 2,
+        "raca": "Cocker",
+        "vacinado": true,
+        "peso": 25,
+        "brinquedos": ["bola", "osso" , "frisbee"],
+        "dono": {
+            "nome": "Giovanna",
+            "telefone": "11 960195971"
+        }
+    }
+}
+,
+{
+    "filme": {
+        "titulo": "Enrolados",
+        "ano": 2013,
+        "diretor": "Cocker",
+        "genero": "animação"
+    }
+}
+,
+{
+    "aluno": {
+        "nome": "Giovanna",
+        "idade": 17,
+        "notas": 10,
+        "aprovado": true
+    }
+}
+,
+{
+    "produto": {
+        "nome": "esmalte risque",
+        "preco": 3,
+        "quantidade": 5,
+        "disponível": true
+    }
+}
+]
