@@ -1,13 +1,10 @@
 /*
 CONSUMINDO UMA API COM JAVASCRIPT
-API: https://dog.ceo/api
-*/
-//================================
+API: https://dog.ceo/api    */
 // 1- SELECIONAR ELEMENTOS DO HTML
-//================================
 
 //Pegar a imagem do cachorro
-const dogImage = document.getElementById("docImage");
+const dogImage = document.getElementById("dogImage");
 //elemento onde aparece o nome da raça
 const breedName = document.getElementById("breedName");
 //botão que busca cachorro aleatório
@@ -15,20 +12,20 @@ const randomBtn = document.getElementById("randomBtn");
 //botão que busca a raça
 const searchBtn = document.getElementById("searchBtn");
 //campo de input onde o usuário digita a raça
-const breedIpnut = document.getElementById("breedIpnut");
+const breedInput = document.getElementById("breedInput");
 // área onde a imagem aparece
 const dogArea = document.querySelector(".dog-area");
 
-//=======================
+
 // 2- URL BASE DA API
-//=======================
+
 
 //endereço principal da API
 const API_BASE = "https://dog.ceo/api"
 
-//===========================
+
 // 3- FUNÇÃO QUE CHAMA A API
-//===========================
+
 
 //função assíncrona que faz requisição HTTP
 async function fetchFromApi(endpoint){
@@ -88,6 +85,52 @@ async function fetchFromApi(endpoint){
     }
 
 }
-fetchFromApi ("/breeds/image/random");
+// fetchFromApi ("/breeds/image/random");
 
 
+// 4- FUNÇÃO DE AÇÃO
+
+
+//buscar um cachorro aleatório 
+function getRandomDog(){
+    fetchFromApi("/breeds/image/random")
+}
+
+//busca cachorro por raça
+function getBreedDog(){
+    //pegar o valor digitado
+    let breed = breedInput.value.toLowerCase().trim();
+
+    //verificar se o campo está vazio
+    if (!breed) {
+        alert("Digite uma raça!");
+        return;
+    }
+
+    //chamar a API com raça digitada
+    fetchFromApi(`/breed/${breed}/images/random`)
+}
+
+// 5- EVENTOS
+
+
+//clique no botão "aleatório"
+randomBtn.addEventListener("click", getRandomDog);
+
+//clique no botão "buscar"
+searchBtn.addEventListener("click", getBreedDog)
+
+//clique na imagem gera novo cachorro
+dogImage.addEventListener("click", getRandomDog)
+
+//Enter dentro do input
+breedIpnut.addEventListener("keypress", function(event){
+
+    //se a tecla pressionada for ENTER
+    if (event.key === "Enter"){
+        getBreedDog();
+    }
+
+});
+
+getRandomDog();
